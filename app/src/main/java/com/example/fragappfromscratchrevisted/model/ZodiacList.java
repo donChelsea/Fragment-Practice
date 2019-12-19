@@ -4,16 +4,16 @@ import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
 
-public class PlanetList {
-@SerializedName("planets")
+public class ZodiacList {
+@SerializedName("zodiac")
 
-    private List<Planet> planetsList;
+    private List<Zodiac> planetsList;
 
-    public PlanetList(List<Planet> planetsList) {
+    public ZodiacList(List<Zodiac> planetsList) {
         this.planetsList = planetsList;
     }
 
-    public List<Planet> getPlanetsList() {
+    public List<Zodiac> getPlanetsList() {
         return planetsList;
     }
 }
