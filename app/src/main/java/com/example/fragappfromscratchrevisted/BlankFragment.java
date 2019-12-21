@@ -23,8 +23,12 @@ public class BlankFragment extends Fragment {
     public BlankFragment() {
     }
 
-    public static BlankFragment newInstance() {
-        return new BlankFragment();
+    public static BlankFragment newInstance(Planet planet) {
+        BlankFragment blankFragment = new BlankFragment();
+        Bundle args = new Bundle();
+        args.putSerializable(PLANET_INSTANCE, planet);
+        blankFragment.setArguments(args);
+        return blankFragment;
     }
 
     @Override
@@ -33,9 +37,10 @@ public class BlankFragment extends Fragment {
         if (getArguments() != null) {
             Planet planet = (Planet) getArguments().getSerializable(PLANET_INSTANCE);
 
-            name = getArguments().getString(planet.getName());
-            number = getArguments().getInt(String.valueOf(planet.getNumber()));
-            image = getArguments().getString(planet.getImage());
+            assert planet != null;
+            name = planet.getName();
+            number = planet.getNumber();
+            image = planet.getImage();
         }
     }
 
@@ -49,7 +54,7 @@ public class BlankFragment extends Fragment {
         imageIv = view.findViewById(R.id.image_iv);
 
         nameTv.setText(name);
-        numberTv.setText(number);
+        numberTv.setText(String.valueOf(number));
         Picasso.get().load(image).into(imageIv);
 
         return view;

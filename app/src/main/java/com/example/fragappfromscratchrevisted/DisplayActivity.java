@@ -1,6 +1,8 @@
 package com.example.fragappfromscratchrevisted;
 
 import android.os.Bundle;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -16,6 +18,14 @@ public class DisplayActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_display);
 
-        BlankFragment fragment = BlankFragment.newInstance();
+        Bundle args = getIntent().getExtras();
+        assert args != null;
+        Planet planet = (Planet) args.getSerializable(PLANET_INSTANCE);
+
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        BlankFragment fragment = BlankFragment.newInstance(planet);
+        fragmentTransaction.add(R.id.container, fragment);
+        fragmentTransaction.commit();
     }
 }

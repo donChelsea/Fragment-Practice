@@ -7,7 +7,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.TextView;
 
-import com.example.fragappfromscratchrevisted.BlankFragment;
+import com.example.fragappfromscratchrevisted.DisplayActivity;
 import com.example.fragappfromscratchrevisted.R;
 import com.example.fragappfromscratchrevisted.model.Planet;
 
@@ -24,7 +24,7 @@ public class PlanetViewHolder extends RecyclerView.ViewHolder {
     public void onBind(Planet planet) {
         planetNameTv.setText(planet.getName());
         planetNameTv.setOnClickListener(v -> {
-            Intent intent = new Intent(v.getContext(), BlankFragment.class);
+            Intent intent = new Intent(v.getContext(), DisplayActivity.class);
             Bundle args = new Bundle();
             args.putSerializable(PLANET_INSTANCE, planet);
             v.getContext().startActivity(intent.putExtras(args));
