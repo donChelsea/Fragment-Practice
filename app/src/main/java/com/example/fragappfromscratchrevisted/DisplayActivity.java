@@ -1,15 +1,9 @@
 package com.example.fragappfromscratchrevisted;
 
-import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 
 import com.example.fragappfromscratchrevisted.model.Planet;
-
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.Serializable;
 
 import static com.example.fragappfromscratchrevisted.view.PlanetViewHolder.PLANET_INSTANCE;
 
