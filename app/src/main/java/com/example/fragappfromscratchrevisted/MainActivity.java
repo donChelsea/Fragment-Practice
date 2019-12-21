@@ -4,9 +4,12 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 
+import com.example.fragappfromscratchrevisted.model.Planet;
 import com.example.fragappfromscratchrevisted.model.PlanetList;
 import com.example.fragappfromscratchrevisted.network.PlanetService;
 import com.example.fragappfromscratchrevisted.network.RetrofitSingleton;
+
+import java.util.List;
 
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
@@ -21,23 +24,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-//
-//        retrofit = RetrofitSingleton.getInstance();
-//        PlanetService planetService = retrofit.create(PlanetService.class);
-//        Call<PlanetList> planetListCall = planetService.getPlanetListObservable();
-//        planetListCall.enqueue(new Callback<PlanetList>() {
-//            @Override
-//            public void onResponse(Call<PlanetList> call, Response<PlanetList> response) {
-//                Log.d(TAG, "planet: " + response.body().getPlanetsList().get(0).getName());
-//
-//            }
-//
-//            @Override
-//            public void onFailure(Call<PlanetList> call, Throwable t) {
-//                Log.d(TAG, "error: " + t.getMessage());
-//
-//            }
-//        });
 
         retrofit = RetrofitSingleton.getInstance()
                 .create(PlanetService.class)
@@ -47,7 +33,9 @@ public class MainActivity extends AppCompatActivity {
                 .subscribe(new Consumer<PlanetList>() {
                     @Override
                     public void accept(PlanetList planetList) throws Exception {
-                        Log.d(TAG, "planet: " + planetList.getPlanetsList().get(0).getName());
+                        List<Planet> planets = planetList.getPlanetsList();
+
+
                     }
                 }, new Consumer<Throwable>() {
                     @Override

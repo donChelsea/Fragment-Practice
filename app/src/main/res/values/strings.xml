@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">FragAppFromScratchrevisted</string>
+    <string name="planet_name">Planet name</string>
 </resources>
