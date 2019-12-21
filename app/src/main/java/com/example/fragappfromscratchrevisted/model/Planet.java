@@ -1,12 +1,12 @@
 package com.example.fragappfromscratchrevisted.model;
 
-public class Zodiac {
+public class Planet {
 
     private String name;
     private int number;
     private String image;
 
-    public Zodiac() {
+    public Planet() {
     }
 
     public String getName() {

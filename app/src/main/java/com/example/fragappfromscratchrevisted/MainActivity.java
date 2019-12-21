@@ -4,8 +4,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 
-import com.example.fragappfromscratchrevisted.model.ZodiacList;
-import com.example.fragappfromscratchrevisted.network.ZodiacService;
+import com.example.fragappfromscratchrevisted.model.PlanetList;
+import com.example.fragappfromscratchrevisted.network.PlanetService;
 import com.example.fragappfromscratchrevisted.network.RetrofitSingleton;
 
 import io.reactivex.android.schedulers.AndroidSchedulers;
@@ -23,31 +23,31 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 //
 //        retrofit = RetrofitSingleton.getInstance();
-//        ZodiacService planetService = retrofit.create(ZodiacService.class);
-//        Call<ZodiacList> planetListCall = planetService.getZodiacListObservable();
-//        planetListCall.enqueue(new Callback<ZodiacList>() {
+//        PlanetService planetService = retrofit.create(PlanetService.class);
+//        Call<PlanetList> planetListCall = planetService.getPlanetListObservable();
+//        planetListCall.enqueue(new Callback<PlanetList>() {
 //            @Override
-//            public void onResponse(Call<ZodiacList> call, Response<ZodiacList> response) {
+//            public void onResponse(Call<PlanetList> call, Response<PlanetList> response) {
 //                Log.d(TAG, "planet: " + response.body().getPlanetsList().get(0).getName());
 //
 //            }
 //
 //            @Override
-//            public void onFailure(Call<ZodiacList> call, Throwable t) {
+//            public void onFailure(Call<PlanetList> call, Throwable t) {
 //                Log.d(TAG, "error: " + t.getMessage());
 //
 //            }
 //        });
 
         retrofit = RetrofitSingleton.getInstance()
-                .create(ZodiacService.class)
-                .getZodiacListObservable()
+                .create(PlanetService.class)
+                .getPlanetListObservable()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Consumer<ZodiacList>() {
+                .subscribe(new Consumer<PlanetList>() {
                     @Override
-                    public void accept(ZodiacList zodiacList) throws Exception {
-                        Log.d(TAG, "zodiac: " + zodiacList.getPlanetsList().get(0).getName());
+                    public void accept(PlanetList planetList) throws Exception {
+                        Log.d(TAG, "planet: " + planetList.getPlanetsList().get(0).getName());
                     }
                 }, new Consumer<Throwable>() {
                     @Override
